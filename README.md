@@ -1,0 +1,2 @@
+# kachel
+Pellet stove integration
