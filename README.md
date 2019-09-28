@@ -15,10 +15,6 @@ http://otgw.tclcode.com/
 
 ## Exposing local webserver for remote development
 
-Our router does not support port-forwarding and I don't want to maintain a server, solutions;
+Our router does not support port-forwarding and I don't want to maintain a server; https://ngrok.com/
 
-https://ngrok.com/
-
-https://serveo.net/
-
-https://pagekite.net/
+Start at boot; https://www.raspberrypi.org/documentation/linux/usage/systemd.md
