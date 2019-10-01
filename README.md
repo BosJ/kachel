@@ -13,6 +13,8 @@ https://www.nodo-shop.nl/en/opentherm-gateway/188-opentherm-gateway.html
 
 http://otgw.tclcode.com/
 
+OT spec: https://www.domoticaforum.eu/uploaded/Ard%20M/Opentherm%20Protocol%20v2-2.pdf
+
 ## Exposing local webserver for remote development
 
 Our router does not support port-forwarding and I don't want to maintain a server; https://ngrok.com/
