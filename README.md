@@ -15,8 +15,8 @@ http://otgw.tclcode.com/
 
 OT spec: https://www.domoticaforum.eu/uploaded/Ard%20M/Opentherm%20Protocol%20v2-2.pdf
 
-## Exposing local webserver for remote development
+## Exposing Raspberry PI for remote development
 
-Our router does not support port-forwarding and I don't want to maintain a server; https://ngrok.com/
+Our router does not support port-forwarding and I don't want to maintain a server; solution https://ngrok.com/
 
 Start at boot; https://www.raspberrypi.org/documentation/linux/usage/systemd.md
