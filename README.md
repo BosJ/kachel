@@ -1,1 +1,1 @@
-Open Term GateWay project
+Open Term Gateway Project
