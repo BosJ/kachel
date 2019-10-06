@@ -1,39 +1,45 @@
-# -*- coding: utf-8 -*-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 import pandas as pd
-from datetime import datetime as dt
-
-app = dash.Dash('Hello World')
-
-data = pd.read_csv('https://raw.githubusercontent.com/BosJ/kachel/master/otgw/log.txt')
-
-ys = list(data.columns.values)
+import plotly.graph_objs as go
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-app.layout = html.Div(children=[
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': data['date'], 'y': data[ys[1]], 'type': 'line', 'name': ys[1]},
-                {'x': data['date'], 'y': data[ys[2]], 'type': 'line', 'name': ys[2]},
-                {'x': data['date'], 'y': data[ys[3]], 'type': 'line', 'name': ys[3]},
-                {'x': data['date'], 'y': data[ys[4]], 'type': 'line', 'name': ys[4]},
-                {'x': data['date'], 'y': data[ys[5]], 'type': 'line', 'name': ys[5]},
-                {'x': data['date'], 'y': data[ys[6]], 'type': 'line', 'name': ys[6]},
-                {'x': data['date'], 'y': data[ys[7]], 'type': 'line', 'name': ys[7]},
-            ],
-            'layout': {
-                'title': 'Lekkuh waam?', 'height': 525
-            }
-        }
-    )
+app.layout = html.Div([
+    dcc.Graph(id = 'graph-with-slider'),
+    html.Button('update', id = 'button')
 ])
 
+@app.callback(
+    Output('graph-with-slider', 'figure'),
+    [Input('button', 'n_clicks')])
+def update_figure(n_clicks):
+
+    df = pd.read_csv('/home/jaco/log.txt')
+    ys = list(df.columns.values)
+
+    traces = []
+    for i in ys[1:]:
+        traces.append(go.Line(
+            x = df.date,
+            y = df[i],
+            text = df[i],
+            name = i
+        ))
+
+    return {
+        'data': traces,
+        'layout': go.Layout(
+            xaxis = {'type': 'date'},
+            margin = {'l': 80, 'b': 20, 't': 50, 'r': 80},
+            legend = {'x': 0, 'y': 1},
+            hovermode = 'closest'
+        )
+    }
+
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server(debug = True)
