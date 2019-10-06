@@ -19,7 +19,7 @@ app.layout = html.Div([
     [Input('button', 'n_clicks')])
 def update_figure(n_clicks):
 
-    df = pd.read_csv('/home/jaco/log.txt')
+    df = pd.read_csv('https://raw.githubusercontent.com/BosJ/kachel/master/otgw/log.txt')
     ys = list(df.columns.values)
 
     traces = []
