@@ -1,6 +1,6 @@
 # Open Term Gateway Project
 
-Dependencies
+###Dependencies:
 
 Pandas `sudo apt-get install python-pandas`
 
